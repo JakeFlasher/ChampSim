@@ -129,12 +129,6 @@ jobs:
       run: |
         sudo apt-get install curl zip unzip tar ${{ matrix.config.cxx }}
 
-    - name: Set up pkg-config
-      if: startsWith(matrix.config.os, 'macos')
-      run: |
-        brew install pkg-config
-        brew install make
-
     - uses: actions/checkout@v4
       with:
         submodules: 'true'
@@ -254,15 +248,15 @@ jobs:
     - name: Set Coverage Environment
       run: sudo apt-get install lcov
 
-    - uses: actions/download-artifact@v4
+    - uses: actions/download-artifact@v4.1.7
       with:
         name: lcov-cpp
 
-    - uses: actions/download-artifact@v4
+    - uses: actions/download-artifact@v4.1.7
       with:
         name: lcov-python
 
-    - uses: actions/download-artifact@v4
+    - uses: actions/download-artifact@v4.1.7
       with:
         name: lcov-json
 
